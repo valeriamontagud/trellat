@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAF7EE">
+  <title>Trellat · Marketing amb trellat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ===== Navegación ===== -->
+  <aside class="sidebar" aria-label="Navegación principal">
+    <a class="brand" href="#" data-go="home" aria-label="Trellat, ir al inicio">
+      <span class="brand-mark">t<span class="dot">.</span></span>
+    </a>
+    <nav class="main-nav">
+      <button class="nav-item active" data-view="calendar"><span class="nav-icon">▦</span>Calendario</button>
+      <button class="nav-item" data-view="tasks"><span class="nav-icon">✓</span>Tareas<b class="nav-count" id="task-count"></b></button>
+      <button class="nav-item" data-view="results"><span class="nav-icon">↗</span>Resultados</button>
+      <button class="nav-item" data-view="brand"><span class="nav-icon"><svg class="i-orange" viewBox="0 0 24 24" aria-hidden="true"><circle class="o" cx="11.5" cy="13.5" r="7.5"/><path class="l" d="M12.2 6.1c.9-2.9 4.3-4.2 7.3-3.1-1.4 2.9-4.6 4-7.3 3.1z"/></svg></span>Mi marca</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <span class="avatar">AT</span>
+      <span class="account-label"><strong>Clínica veterinaria</strong><small>Plan gratuito · Demo</small></span>
+      <button class="icon-button" id="reset-demo" title="Restablecer demo" aria-label="Restablecer demo">↺</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <a class="brand" href="#" data-go="home" aria-label="Trellat, ir al inicio">
+        <span class="brand-mark">t<span class="dot">.</span></span><span class="brand-name">trellat<span class="dot">.</span></span>
+      </a>
+      <div class="breadcrumb">Tu espacio <span>/</span> <strong id="page-crumb">Calendario</strong></div>
+      <div class="topbar-right"><span class="status-dot"></span><span>Tu estrategia está activa</span><span class="avatar">AT</span></div>
+    </header>
+
+    <!-- ===== Inicio (se abre al pulsar el logo) ===== -->
+    <section class="view" id="view-home">
+      <div class="home-hero">
+        <div>
+          <p class="eyebrow" id="home-greeting">Hola</p>
+          <h1>Marketing amb trellat<span class="dot">.</span></h1>
+          <p class="intro">Te decimos qué grabar, cuándo publicarlo y cómo contarlo. Tú pones el negocio; nosotros, el trellat.</p>
+          <div class="home-actions">
+            <button class="button button-primary" data-go="calendar">Ver mi calendario →</button>
+            <button class="button button-light" data-go="tasks">Mis tareas</button>
+          </div>
+        </div>
+        <!-- Ilustración: un mes ordenado. Colores de la marca, sin imágenes externas. -->
+        <svg class="home-art" viewBox="0 0 360 300" role="img" aria-label="Ilustración de un calendario ordenado">
+          <rect class="a-groc" x="150" y="0" width="210" height="240" rx="28"/>
+          <rect class="a-card" x="20" y="40" width="270" height="240" rx="20"/>
+          <rect class="a-head" x="20" y="40" width="270" height="44" rx="20"/>
+          <rect class="a-head" x="20" y="64" width="270" height="20"/>
+          <circle class="a-dot" cx="262" cy="62" r="9"/>
+          <g class="a-cells" id="home-art-cells"></g>
+          <circle class="a-dot" cx="320" cy="262" r="22"/>
+        </svg>
+      </div>
+
+      <div class="home-grid">
+        <article class="panel definition">
+          <p class="eyebrow">Diccionari</p>
+          <h2>trellat <span class="muted">s. m.</span></h2>
+          <p class="phon">[tɾeˈʎat] · valencià</p>
+          <p>Seny, sentit comú. La capacitat de fer les coses amb cap.</p>
+          <p class="translation"><strong>En castellano:</strong> sentido común, juicio, cabeza.</p>
+          <p class="refrany">No tindre ni trellat ni forrellat.</p>
+          <p class="helper">No tener ni pizca de sentido común. Justo lo contrario de lo que queremos para tu marketing.</p>
+        </article>
+        <div class="home-stats" id="home-stats"></div>
+      </div>
+
+      <article class="refrany-card">
+        <div>
+          <p class="eyebrow">El refrán del día</p>
+          <p class="refrany" id="refrany-text"></p>
+          <p id="refrany-meaning"></p>
+        </div>
+        <button class="button button-light" id="refrany-next">Otro refrán</button>
+      </article>
+
+      <h2 class="home-subtitle">Así funciona Trellat<span class="dot">.</span></h2>
+      <ol class="how-steps">
+        <li><span>1</span><strong>Nos cuentas tu mes</strong><p>Objetivos, campañas y lo que tienes entre manos.</p></li>
+        <li><span>2</span><strong>Trellat propone</strong><p>Qué publicar, en qué formato y cuándo, con guion incluido.</p></li>
+        <li><span>3</span><strong>Tú decides</strong><p>Aceptas, cambias o descartas. Siempre tienes la última palabra.</p></li>
+      </ol>
+    </section>
+
+    <!-- ===== Calendario ===== -->
+    <section class="view active" id="view-calendar">
+
+      <div class="calendar-welcome" id="calendar-welcome" hidden>
+        <div class="welcome-content">
+          <p class="refrany">Encara no tens ni trellat ni forrellat… tranquil, per a això estem.</p>
+          <h1>Tú marcas el objetivo. Trellat pone las ideas<span class="dot">.</span></h1>
+          <p class="welcome-description">Cuéntanos qué quieres conseguir y te proponemos qué publicar para lograrlo: ideas adaptadas a tu negocio, el formato que mejor encaja y un mes organizado, sin necesidad de saber de marketing.</p>
+          <div class="welcome-benefits">
+            <article><span class="symbol"><svg class="i-orange" viewBox="0 0 24 24" aria-hidden="true"><circle class="o" cx="11.5" cy="13.5" r="7.5"/><path class="l" d="M12.2 6.1c.9-2.9 4.3-4.2 7.3-3.1-1.4 2.9-4.6 4-7.3 3.1z"/></svg></span><div><strong>Ideas para tus publicaciones</strong><p>Reels, carruseles, historias y otros formatos.</p></div></article>
+            <article><span class="symbol">▦</span><div><strong>Una propuesta para todo el mes</strong><p>Organiza el contenido y adapta las fechas a tu disponibilidad.</p></div></article>
+            <article><span class="symbol">✓</span><div><strong>Tú tienes la última palabra</strong><p>Revisa, edita y decide qué publicaciones quieres planificar.</p></div></article>
+          </div>
+          <button class="button button-dark" data-open-month>Crear mi plan de contenido →</button>
+          <p class="welcome-note">Podrás revisar y modificar todas las propuestas antes de planificarlas.</p>
+        </div>
+      </div>
+
+      <div id="calendar-workspace">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Tu contenido, con trellat</p>
+            <h1>Un plan con sentido<span class="dot">.</span></h1>
+            <p class="intro">Trellat propone qué publicar y cuándo. Tú decides si quieres ajustarlo.</p>
+          </div>
+          <button class="button button-primary" data-open-month>Preparar otro mes</button>
+        </div>
+
+        <div class="plan-status">
+          <span class="symbol"><svg class="i-orange" viewBox="0 0 24 24" aria-hidden="true"><circle class="o" cx="11.5" cy="13.5" r="7.5"/><path class="l" d="M12.2 6.1c.9-2.9 4.3-4.2 7.3-3.1-1.4 2.9-4.6 4-7.3 3.1z"/></svg></span>
+          <div id="plan-status-copy"></div>
+          <button class="button button-light" data-open-month>Editar preferencias</button>
+        </div>
+
+        <div class="strategy-banner">
+          <span class="symbol on-light">◎</span>
+          <div><strong id="strategy-title">Tu estrategia del mes</strong><p>Educar, generar confianza y acercar la clínica a las familias de tu zona.</p></div>
+          <button class="text-button" id="strategy-details">Ver estrategia ↗</button>
+        </div>
+
+        <div class="section-heading">
+          <div><h2 id="month-title"></h2><p>Recomendaciones y publicaciones planificadas</p></div>
+          <div class="calendar-controls">
+            <button class="icon-button" id="prev-month" aria-label="Mes anterior">‹</button>
+            <button class="icon-button" id="next-month" aria-label="Mes siguiente">›</button>
+            <button class="button button-light" id="today-btn">Hoy</button>
+          </div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid" aria-label="Calendario mensual"></div>
+        <div class="legend">
+          <span><i class="recommendation"></i>Recomendación de Trellat</span>
+          <span><i class="planned"></i>Planificada</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Tareas ===== -->
+    <section class="view" id="view-tasks">
+      <div class="page-heading"><div>
+        <p class="eyebrow">Todo bajo control</p>
+        <h1>Pequeños pasos, grandes ideas<span class="dot">.</span></h1>
+        <p class="intro">Lo que necesitas para convertir el plan en publicaciones reales.</p>
+      </div></div>
+      <div class="summary-row" id="task-summary"></div>
+      <div class="task-list" id="task-list"></div>
+    </section>
+
+    <!-- ===== Resultados ===== -->
+    <section class="view" id="view-results">
+      <div class="page-heading"><div>
+        <p class="eyebrow">Aprender para mejorar</p>
+        <h1>¿Qué está funcionando?</h1>
+        <p class="intro">Una vista sencilla para entender el impacto de tu contenido.</p>
+      </div></div>
+      <div class="notice"><span class="symbol on-light"><svg class="i-orange" viewBox="0 0 24 24" aria-hidden="true"><circle class="o" cx="11.5" cy="13.5" r="7.5"/><path class="l" d="M12.2 6.1c.9-2.9 4.3-4.2 7.3-3.1-1.4 2.9-4.6 4-7.3 3.1z"/></svg></span><div><strong>Esta sección está preparada para crecer.</strong><p>De momento mostramos datos de ejemplo. Más adelante conectaremos las métricas reales de tus redes.</p></div></div>
+      <div class="metrics-grid">
+        <article class="metric-card"><span>Alcance del mes</span><strong>2.840</strong><small>Datos de demostración</small></article>
+        <article class="metric-card"><span>Interacciones</span><strong>186</strong><small>Datos de demostración</small></article>
+        <article class="metric-card"><span>Contenido publicado</span><strong>8</strong><small>Datos de demostración</small></article>
+      </div>
+      <article class="panel insight-panel">
+        <p class="eyebrow">Aprendizaje de Trellat</p>
+        <h2>Lo útil también conecta.</h2>
+        <p>En el ejemplo, las publicaciones educativas generan más guardados. Mantén este enfoque y compara cuando tengas datos reales.</p>
+        <span class="demo-tag">Ejemplo ilustrativo, no datos reales</span>
+      </article>
+    </section>
+
+    <!-- ===== Mi marca ===== -->
+    <section class="view" id="view-brand">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">La base de tus recomendaciones</p>
+          <h1>Tu marca, a tu manera<span class="dot">.</span></h1>
+          <p class="intro">Cuéntale a Trellat quién eres para que las ideas encajen contigo.</p>
+        </div>
+        <button class="button button-dark" type="submit" form="brand-form" id="save-profile">Guardar cambios</button>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="profile" aria-selected="true">Perfil</button>
+        <button class="tab" role="tab" data-tab="kit" aria-selected="false">Kit de marca</button>
+      </div>
+      <div class="tab-panel" data-panel="profile">
+      <form class="panel brand-form" id="brand-form">
+        <div class="form-section-title"><span class="form-number">01</span><div><h2>Tu negocio</h2><p>La información básica de tu marca.</p></div></div>
+        <div class="grid-2">
+          <label class="field">Nombre del negocio<input name="business" required></label>
+          <label class="field">Sector<select name="sector" data-options="sectors"></select></label>
+          <label class="field full">¿Qué ofreces?<textarea name="offer" rows="2"></textarea></label>
+        </div>
+        <div class="form-section-title"><span class="form-number">02</span><div><h2>Tu audiencia</h2><p>¿A quién quieres llegar?</p></div></div>
+        <div class="grid-2">
+          <label class="field full">Describe a tus clientes<textarea name="audience" rows="2"></textarea></label>
+          <label class="field">Objetivo principal<select name="goal" data-options="goals"></select></label>
+          <label class="field">Tono de comunicación<select name="tone" data-options="tones"></select></label>
+        </div>
+        <div class="form-section-title"><span class="form-number">03</span><div><h2>Tu presencia digital</h2><p>¿En qué redes publicas?</p></div></div>
+        <div class="chips" data-chips="channels" data-name="channels"></div>
+      </form>
+      <p class="save-feedback" id="brand-feedback" role="status"></p>
+      </div>
+      <!-- Kit de marca: se pinta desde js/brand-kit.js y se guarda solo al cambiar algo -->
+      <div class="tab-panel" data-panel="kit" id="brand-kit" hidden></div>
+    </section>
+  </main>
+</div>
+
+<!-- ===== Ventana: preparar el mes ===== -->
+<div class="modal-backdrop" id="month-modal" aria-hidden="true">
+  <section class="modal wide" role="dialog" aria-modal="true" aria-labelledby="month-modal-title">
+    <div class="modal-header">
+      <div>
+        <p class="eyebrow">Antes de crear el calendario</p>
+        <h2 id="month-modal-title">¿Qué tienes entre manos este mes?</h2>
+        <p class="modal-intro">Con este contexto Trellat preparará una propuesta de publicaciones y fechas que podrás revisar.</p>
+      </div>
+      <button class="icon-button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <form class="modal-body form-stack" id="month-form">
+      <div class="grid-2">
+        <label class="field">¿Para qué mes?<input type="month" name="month" required></label>
+        <label class="field">¿Cada cuánto quieres publicar?
+          <select name="frequency">
+            <option value="balanced">Equilibrada (2–3 por semana)</option>
+            <option value="light">Ligera (1–2 por semana)</option>
+            <option value="active">Activa (4 o más por semana)</option>
+            <option value="ai">Que Trellat lo recomiende</option>
+          </select>
+        </label>
+      </div>
+      <div class="field">¿Qué te gustaría conseguir?<span class="helper">Puedes marcar varias.</span>
+        <div class="chips" data-chips="goals" data-name="goals"></div>
+      </div>
+      <label class="field">¿Campañas, promociones o fechas importantes?<span class="helper">Campaña de vacunación, Black Friday, aniversario, evento local…</span>
+        <textarea name="campaigns" rows="3" placeholder="Ej. Del 10 al 20 tenemos una promoción de vacunación."></textarea></label>
+      <label class="field">¿Productos, servicios o novedades que destacar?
+        <textarea name="launches" rows="2" placeholder="Ej. Nuevo servicio, cambio de horario…"></textarea></label>
+      <label class="field">¿Días en los que quieras publicar o que debamos evitar?
+        <textarea name="dates" rows="2" placeholder="Ej. Los lunes no podemos grabar vídeos."></textarea></label>
+      <label class="field">Cualquier otra preferencia
+        <textarea name="notes" rows="3" placeholder="Ej. Preferimos vídeos cortos y tenemos pocas fotos nuevas."></textarea></label>
+      <div class="brief-note"><span class="brief-icon"><svg class="i-orange" viewBox="0 0 24 24" aria-hidden="true"><circle class="o" cx="11.5" cy="13.5" r="7.5"/><path class="l" d="M12.2 6.1c.9-2.9 4.3-4.2 7.3-3.1-1.4 2.9-4.6 4-7.3 3.1z"/></svg></span><p><strong>La estrategia sigue siendo de Trellat.</strong> Tus indicaciones son contexto: las combinamos con tu marca para proponer qué publicar, en qué formato y cuándo.</p></div>
+    </form>
+    <div class="modal-footer">
+      <button class="button button-light" data-close>Cancelar</button>
+      <button class="button button-dark" type="submit" form="month-form">Generar propuesta →</button>
+    </div>
+  </section>
+</div>
+
+<!-- ===== Ventana: crear publicación ===== -->
+<div class="modal-backdrop" id="post-modal" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="post-modal-title">
+    <div class="modal-header">
+      <div><p class="eyebrow">Recomendación de Trellat</p><h2 id="post-modal-title">Dale forma a esta idea.</h2></div>
+      <button class="icon-button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <div class="stepper" aria-label="Pasos de creación">
+      <div class="step"><span>1</span><small>Idea</small></div><i></i>
+      <div class="step"><span>2</span><small>Contenido</small></div><i></i>
+      <div class="step"><span>3</span><small>Planificar</small></div>
+    </div>
+    <div class="modal-body" id="post-body"></div>
+    <div class="modal-footer">
+      <button class="button button-light" id="back-step">Volver</button>
+      <button class="button button-dark push" id="next-step">Continuar →</button>
+    </div>
+  </section>
+</div>
+
+<!-- ===== Ventana: generar carrusel (se abre encima de la publicación) ===== -->
+<div class="modal-backdrop" id="carousel-modal" aria-hidden="true">
+  <section class="modal wide" role="dialog" aria-modal="true" aria-labelledby="carousel-modal-title">
+    <div class="modal-header">
+      <div>
+        <p class="eyebrow" id="carousel-eyebrow">Carrusel · Paso 1 de 2</p>
+        <h2 id="carousel-modal-title">Las fotos que necesitas.</h2>
+        <p class="modal-intro" id="carousel-intro"></p>
+      </div>
+      <button class="icon-button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <div class="modal-body" id="carousel-body"></div>
+    <div class="modal-footer">
+      <button class="button button-light" id="carousel-back">Cerrar</button>
+      <button class="button button-dark push" id="carousel-next">Generar carrusel →</button>
+    </div>
+  </section>
+</div>
+
+<!-- ===== Ventana: referencias visuales del Reel ===== -->
+<div class="modal-backdrop" id="reel-modal" aria-hidden="true">
+  <section class="modal wide" role="dialog" aria-modal="true" aria-labelledby="reel-modal-title">
+    <div class="modal-header">
+      <div>
+        <p class="eyebrow">Reel · Cómo grabarlo</p>
+        <h2 id="reel-modal-title">Así se ve cada escena.</h2>
+        <p class="modal-intro">Esquemas orientativos: te enseñan dónde colocar a cada persona, mascota u objeto en el plano y dónde irá el texto. No son fotos reales.</p>
+      </div>
+      <button class="icon-button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <div class="modal-body" id="reel-body"></div>
+    <div class="modal-footer">
+      <button class="button button-dark push" data-close>Entendido</button>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- El orden importa: cada archivo usa lo que cargan los anteriores. -->
+<script src="js/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/posts.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/reel-guide.js"></script>
+<script src="js/month-planner.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/brand.js"></script>
+<script src="js/brand-kit.js"></script>
+<script src="js/home.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

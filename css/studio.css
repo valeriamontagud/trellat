@@ -1,0 +1,102 @@
+/* Estudio: botón según formato, generador de carrusel y referencias visuales del Reel. */
+
+/* Tarjeta dentro de la publicación */
+.studio-card {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px;
+  margin: 16px 0 4px; padding: 14px 16px; background: var(--groc-soft); border-radius: var(--radius-md);
+}
+.studio-card strong { display: block; font-size: 14px; }
+.studio-card p { margin-top: 2px; font-size: 13px; color: var(--ink-muted); }
+.studio-done { display: block; margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--oliva-text); }
+.form-stack .studio-card { margin: 0; }
+
+/* ---- Carrusel · paso 1 ---- */
+.photo-progress { margin-bottom: 14px; font-size: 13px; }
+.slide-list { display: grid; gap: 12px; }
+.slide-item {
+  display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; padding: 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
+}
+.slide-thumb {
+  aspect-ratio: 4 / 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  border: 2px dashed var(--line); border-radius: var(--radius-sm); background: var(--surface-2); overflow: hidden; color: var(--ink-muted);
+}
+.slide-thumb span { font: 700 30px/1 var(--font-display); }
+.slide-thumb small { font-size: 11px; font-weight: 700; }
+.slide-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.slide-thumb:has(img) { border-style: solid; }
+.slide-thumb.no-photo { border-style: solid; background: var(--mar-soft); color: var(--mar-text); }
+.slide-fields { display: grid; gap: 10px; align-content: start; }
+.slide-head { display: flex; justify-content: space-between; align-items: center; }
+.photo-brief { padding: 10px 12px; border-left: 3px solid var(--taronja); background: var(--paper); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; }
+.photo-brief .eyebrow { margin-bottom: 4px; font-size: 10px; }
+.photo-brief small { display: block; margin-top: 6px; font-size: 11px; color: var(--ink-muted); }
+.slide-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.slide-actions .button { padding: 8px 14px; font-size: 13px; }
+.inline-check { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-size: 13px; font-weight: 700; }
+.inline-check:has(input:disabled) { opacity: .45; }
+.slide-list-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+
+/* ---- Carrusel · paso 2 ---- */
+.slide-strip {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 260px); gap: 14px;
+  padding-bottom: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+}
+.slide-render { margin: 0; scroll-snap-align: start; }
+.slide-render canvas { width: 100%; height: auto; display: block; border-radius: var(--radius-sm); box-shadow: 0 1px 0 var(--line), 0 6px 18px rgba(34, 32, 26, .12); background: var(--surface-2); }
+.slide-render figcaption { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 12px; font-weight: 700; color: var(--ink-muted); }
+
+/* ---- Reel ---- */
+.sb-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 16px; font-size: 12px; color: var(--ink-muted); }
+.sb-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sb-legend i { width: 18px; height: 12px; border-radius: 3px; }
+.lg-grid { border: 1.5px dashed var(--mar); }
+.lg-safe { background: repeating-linear-gradient(45deg, rgba(34, 32, 26, .28) 0 2px, transparent 2px 5px); }
+.lg-text { background: var(--sb-accent, var(--taronja)); }
+.lg-move { height: 3px !important; background: var(--ink); }
+
+.scene-list { display: grid; gap: 14px; }
+.scene-card {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; padding: 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
+}
+.scene-frame { position: relative; margin: 0; }
+.scene-frame svg { width: 100%; height: auto; display: block; border-radius: 10px; }
+.scene-frame figcaption {
+  position: absolute; top: 8px; left: 8px; width: 24px; height: 24px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 12px; font-weight: 700;
+}
+.scene-info h3 { font-size: 18px; }
+.scene-info .eyebrow { margin-bottom: 4px; }
+.scene-text { margin: 6px 0 12px; font-size: 14px; font-style: italic; color: var(--ink-muted); }
+.scene-tips { display: grid; gap: 8px; margin: 0; font-size: 13px; }
+.scene-tips div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px; }
+.scene-tips dt { font-weight: 700; }
+.scene-tips dd { margin: 0; }
+
+/* Piezas del esquema */
+.sb-bg { fill: var(--surface-2); }
+.sb-grid { stroke: var(--mar); stroke-width: 1; stroke-dasharray: 4 4; fill: none; opacity: .8; }
+.sb-hatch { stroke: rgba(34, 32, 26, .22); stroke-width: 3; }
+.sb-subject { fill: #C9D9DE; stroke: var(--mar-text); stroke-width: 1.5; }
+.sb-subject-in { fill: #E3ECEF; stroke: var(--mar-text); stroke-width: 1.5; }
+.sb-pet { fill: #E9D7B8; stroke: #8A6A3A; stroke-width: 1.5; }
+.sb-eye { fill: var(--ink); }
+.sb-place { fill: var(--surface); stroke: var(--ink-muted); stroke-width: 1.5; }
+.sb-floor { stroke: var(--ink-muted); stroke-width: 1.5; }
+.sb-mouth { fill: #B5543F; stroke: #8A6A3A; stroke-width: 1.5; }
+.sb-teeth { fill: none; stroke: #fff; stroke-width: 3; stroke-linejoin: round; }
+.sb-obj-line { fill: var(--line); }
+.sb-focus { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.sb-text { fill: var(--sb-accent, var(--taronja)); opacity: .92; }
+.sb-text-line { fill: #fff; opacity: .9; }
+.sb-move { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (max-width: 700px) {
+  .studio-card { grid-template-columns: auto minmax(0, 1fr); }
+  .studio-card .button { grid-column: 1 / -1; }
+  .slide-item { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+  .scene-card { grid-template-columns: 110px minmax(0, 1fr); gap: 12px; }
+  .scene-tips div { grid-template-columns: 1fr; gap: 2px; }
+  .slide-strip { grid-auto-columns: 72%; }
+}

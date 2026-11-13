@@ -1,0 +1,42 @@
+/* Tokens de marca Trellat: cambia aquí un color y cambia en toda la app. */
+:root {
+  /* Fondos y líneas */
+  --paper: #FAF7EE;
+  --surface: #FFFFFF;
+  --surface-2: #F2EEE1;
+  --line: #E3DDCB;
+
+  /* Texto */
+  --ink: #22201A;
+  --ink-muted: #625D50;
+
+  /* Marca */
+  --groc: #E9E14B;          /* amarillo Trellat */
+  --groc-hover: #DCD43A;
+  --groc-soft: #F6F2B9;
+  --on-groc: #22201A;
+  --taronja: #E4572E;       /* el punto: solo formas y acentos grandes */
+  --taronja-text: #B13E17;  /* errores, badges con número blanco */
+
+  /* Estados del calendario */
+  --mar: #4F7584;           /* recomendación de Trellat */
+  --mar-soft: #E3ECEF;
+  --mar-text: #2E4D59;
+  --oliva: #8A8628;         /* planificada */
+  --oliva-soft: #EEEBC8;
+  --oliva-text: #5C5A14;
+
+  /* Tipografía */
+  --font-display: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-refrany: "Fraunces", Georgia, serif;
+
+  /* Forma */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
